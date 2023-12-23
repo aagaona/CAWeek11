@@ -3,23 +3,26 @@ const Player_2 = `O`
 let turn = Player_1;
 let squares = document.querySelectorAll('.game-board');
 
+// add click listner to return the id when square is selected and produce the correct outcome    
+squares.forEach(square => {square.addEventListener('click', () =>{
+    let id = square.getAttribute('id');
+    let usableid = `#${id}`;
+    
+    resolveClick(usableid);   
+    changeTurn();
+    determineWinner();
+
+    console.log(turn);
+
+});
+});
+
+
 function startGame(){
     turn = Player_1;
     changeTurn();
 
         
-    // add click listner to return the id when square is selected and produce the correct outcome    
-    squares.forEach(square => {square.addEventListener('click', () =>{
-        let id = square.getAttribute('id');
-        let usableid = `#${id}`;
-        
-        resolveClick(usableid);   
-        changeTurn();
-        determineWinner();
-        console.log(turn);
-    
-    }, {once: true});
-    });
 };
  
 
@@ -59,7 +62,8 @@ function boardClickX (id){
     box.text('X');
     box.css('font-size','45px');
     box.css('font-weight','bold');
-    box.css('color','aqua');   
+    box.css('color','aqua');
+    box.css('pointer-events','none');   
     
 };
 
@@ -70,6 +74,7 @@ function boardClickO (id){
     box.css('font-size','45px');
     box.css('font-weight','bold');
     box.css('color','goldenrod');
+    box.css('pointer-events','none');
 };
 
 function resolveClick(usableid){
