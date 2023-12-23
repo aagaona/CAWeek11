@@ -3,6 +3,9 @@ const Player_2 = `O`
 let turn = Player_1;
 let squares = document.querySelectorAll('.game-board');
 
+
+
+
 // add click listner to return the id when square is selected and produce the correct outcome    
 squares.forEach(square => {square.addEventListener('click', () =>{
     let id = square.getAttribute('id');
@@ -11,30 +14,17 @@ squares.forEach(square => {square.addEventListener('click', () =>{
     resolveClick(usableid);   
     changeTurn();
     determineWinner();
-
-    console.log(turn);
-
 });
 });
 
 
+//sets up the start of the game and moves the turn box to the right person
 function startGame(){
+    $('#resetbtn').toggle();
     turn = Player_1;
-    changeTurn();
-
-        
+    changeTurn(); 
 };
  
-
-function modifyEventListener(id){
-    let usableid = `#${id}`;
-    
-    resolveClick(usableid);   
-    changeTurn();
-    determineWinner();
-    console.log(turn);  
-};
-
 
 
 //moves the turn box
@@ -56,6 +46,8 @@ function changeTurn(){
     
 }
 
+
+
 //handles the input of an X
 function boardClickX (id){
     let box = $(id);
@@ -63,9 +55,10 @@ function boardClickX (id){
     box.css('font-size','45px');
     box.css('font-weight','bold');
     box.css('color','aqua');
-    box.css('pointer-events','none');   
-    
+    box.css('pointer-events','none'); 
 };
+
+
 
 //handles the input of an O
 function boardClickO (id){
@@ -85,8 +78,8 @@ function resolveClick(usableid){
         boardClickO(usableid);
         turn = Player_1;
     };
-    console.log(`clicked`)
 };
+
 
 
 //determine winner by cycling through each possible outcome, I feel like this could be refactored
@@ -129,18 +122,22 @@ function determineWinner(){
 };
 
 
+
 //outcome Alerts
 function victoryBanner(player) {
     $('#resetbtn').text('Play Again');
     alert(`${player} Wins!`);
     $('.game-board').css('pointer-events','none');
+    $('#resetbtn').toggle();
 };
 
 function tieBanner () {
     $('#resetbtn').text('Play Again');
     alert(`It's a tie...`);
     $('.game-board').css('pointer-events','none');
+    $('#resetbtn').toggle();
 };
+
 
 
 //used to check if everysquare has been filled
@@ -161,6 +158,7 @@ function fullBoardCheck(){
 }
 
 
+
 //swaps text of the reset button
 function resetGame(){
     if ($('#resetbtn').text() === `Play Again`){
@@ -174,13 +172,15 @@ function resetGame(){
     startGame();
 };
 
+
+
 //defines what the reset button does when clicked
 $('#resetbtn').on('click', () => {
     resetGame();    
 });
 
 
-//----------------------------------------------------
+//"Loads" the Game----------------------------------------------------
 startGame();
 
 

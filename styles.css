@@ -24,6 +24,14 @@ body{
     background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
     text-align: center;
     margin: 0;
+    width: auto;
+}
+
+#game-title{
+   color:ghostwhite;
+   width: auto;
+   text-align: center;
+   text-shadow: 1px 1px 2px navy;
 }
 
 #P1Box{
@@ -33,6 +41,7 @@ body{
 #P1 {
     font-weight: bolder;
     color: white;
+    text-shadow: 1px 1px 2px navy;
 }
 
 #play-x{
@@ -50,6 +59,7 @@ body{
 #P2 {
     font-weight: bolder;
     color: white;
+    text-shadow: 1px 1px 2px navy;
 }
 
 #play-o{
@@ -88,6 +98,11 @@ body{
 }
 
 .container{
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width:fit-content;
     border-radius: 10px;
 }
@@ -168,11 +183,13 @@ body{
     border-color: white;
 }
 
+
 footer{
     display: flex;
     flex-direction: column;
     color: grey;
     margin-top: auto;
+    padding: 40px;
     min-width: 100vh;
     width: auto;
     height: auto;
